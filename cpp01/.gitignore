@@ -1,0 +1,11 @@
+**/**.dSYM/**
+**/.DS_Store
+**/.vscode
+**.zip
+
+**/zombie
+**/smth
+**/violence
+**/sed
+**/harl
+**/harlFilter
