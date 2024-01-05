@@ -1,0 +1,9 @@
+**/**.dSYM/**
+**/.DS_Store
+**/.vscode
+**.zip
+
+**/clap
+**/scav
+**/frag
+**/diamond
