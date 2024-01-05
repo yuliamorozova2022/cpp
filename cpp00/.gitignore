@@ -1,0 +1,7 @@
+**/**.dSYM/**
+**/.DS_Store
+**/.vscode
+**.zip
+ex00/acc
+ex01/phonebook
+ex02/megaphone
