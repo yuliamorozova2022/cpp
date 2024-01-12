@@ -22,7 +22,7 @@ void MateriaSource::fillStorage(const MateriaSource& orig) {
 			}
 		}
 	}
-	std::cout << "Storage filled" << std::endl; // REMOVE!!!
+	// std::cout << "Storage filled" << std::endl; // REMOVE!!!
 }
 
 MateriaSource::MateriaSource() {
@@ -30,22 +30,12 @@ MateriaSource::MateriaSource() {
 		_storage[i] = NULL;
 	}
 	_full = false;
-	// std::cout << "_full var = " << _full << std::endl; //DELETE
 	std::cout << "Default constructor. MateriaSource created" << std::endl;
 }
 
 MateriaSource::MateriaSource(const MateriaSource& orig) {
 	_full = false;
-	/*for (int i = 0; i < STORAGESIZE; i++) {
-		if (orig._storage[i] != NULL) {
-			_storage[i] = orig._storage[i]->clone();
-			if (i == 3) {
-				_full = true;
-			}
-		}
-	}*/
 	fillStorage(orig);
-	// std::cout << "_full var = " << _full << std::endl; //DELETE
 	std::cout << "Copy constructor. MateriaSource copied" << std::endl;
 }
 
@@ -57,17 +47,10 @@ MateriaSource& MateriaSource::operator = (const MateriaSource& orig) {
 	_full = false;
 	fillStorage(orig);
 	std::cout << "Assignment operator. MateriaSource copied" << std::endl;
-	// std::cout << "_full var = " << _full << std::endl; //DELETE
 	return *this;
 }
 
 MateriaSource::~MateriaSource() {
-	/*for (int i = 0; i < STORAGESIZE; i++) {
-		if (_storage[i] != NULL) {
-			delete _storage[i];
-			_storage[i] = NULL;
-		}
-	} */
 	clearStorage();
 	std::cout << "Default destructor. MateriaSource deleted" << std::endl;
 }
@@ -75,8 +58,6 @@ MateriaSource::~MateriaSource() {
 void MateriaSource::learnMateria(AMateria* materia) {
 	if (_full == true) {
 		std::cout << "Storage is full. Can't learn materia " << materia->getType() << std::endl;
-		delete materia;
-		materia = NULL;
 		return;
 	}
 	if (materia == NULL) {
@@ -93,13 +74,9 @@ void MateriaSource::learnMateria(AMateria* materia) {
 			break;
 		}
 	}
-	// std::cout << "_full var = " << _full << std::endl; //DELETE
 }
 
 AMateria* MateriaSource::createMateria(std::string const & type) {
-	// TODOOOOOOOOOO
-	
-	// std::cout << "_full var = " << _full << std::endl; //DELETE
 
 	for (int i = 0; i < STORAGESIZE; i++) {
 		if (_storage[i] && type.compare(_storage[i]->getType()) == 0) {

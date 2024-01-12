@@ -6,7 +6,7 @@ Character::Character() {
 		_inventory[i] = NULL;
 	}
 	_name = "";
-	std::cout << "Default constructor. Character created" << std::endl;
+	// std::cout << "Default constructor. Character created" << std::endl;
 }
 
 Character::Character(std::string nm) {
@@ -14,7 +14,7 @@ Character::Character(std::string nm) {
 		_inventory[i] = NULL;
 	}
 	_name = nm;
-	std::cout << "String constructor. Character " << _name << " created" << std::endl;
+	// std::cout << "String constructor. Character " << _name << " created" << std::endl;
 }
 
 Character::Character(const Character& orig) {
@@ -26,7 +26,7 @@ Character::Character(const Character& orig) {
 			_inventory[i] = NULL;
 		}
 	}
-	std::cout << "Copy constructor. Character " << _name << " copied" << std::endl;
+	// std::cout << "Copy constructor. Character " << _name << " copied" << std::endl;
 }
 
 Character& Character::operator = (const Character& orig) {
@@ -45,12 +45,12 @@ Character& Character::operator = (const Character& orig) {
 			_inventory[i] = orig._inventory[i]->clone();
 		}
 	}
-	std::cout << "Assignment operator. Character " << _name << " copied" << std::endl;
+	// std::cout << "Assignment operator. Character " << _name << " copied" << std::endl;
 	return *this;
 }
 
 Character::~Character() {
-	std::cout << "Default destructor. Character " << getName() << " deleted" << std::endl;
+	// std::cout << "Default destructor. Character " << getName() << " deleted" << std::endl;
 	for (int i = 0; i < INVENT_SIZE; i++) {
 		if (_inventory[i] != NULL) {
 			delete _inventory[i];
@@ -80,7 +80,7 @@ void Character::equip(AMateria* m) {
 
 void Character::unequip(int idx) {
 	if (idx < 0 || idx > INVENT_SIZE - 1) {
-		std::cout << "Invalid index!" << std::endl;
+		std::cout << "Invalid index [" << idx << "]!" << std::endl;
 		return;
 	} 
 	if (_inventory[idx] == NULL) {
@@ -104,3 +104,17 @@ void Character::use(int idx, ICharacter& target) {
 
 	_inventory[idx]->use(target);
 }
+
+/* 
+void Character::printInv() {
+
+	std::cout << "******************************" << std::endl;
+	for (int i = 0; i < INVENT_SIZE; i++) {
+		if (_inventory[i]) {
+			std::cout << "inventory [" << i << "] is " << _inventory[i]->getType() << ". addr "<< _inventory[i]<< std::endl;
+		} else {
+			std::cout << "inventory [" << i << "] is empty" << std::endl;
+		}
+	}
+	std::cout << "******************************" << std::endl;
+} */

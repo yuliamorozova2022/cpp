@@ -6,47 +6,38 @@
 
 int main() {
 	// code from the excersize (a little bit modified)
-	/*
-	std::cout << "_____________" << std::endl;
+	
 	IMateriaSource* src = new MateriaSource();
-	std::cout << "_____________" << std::endl;
 
 	src->learnMateria(new Ice());
-	std::cout << "_____________" << std::endl;
 	src->learnMateria(new Cure());
-	std::cout << "_____________" << std::endl;
-
+	
 	ICharacter* me = new Character("me");
-	std::cout << "_____________" << std::endl;
 	AMateria* tmp;
 	tmp = src->createMateria("ice");
-	std::cout << "_____________" << std::endl;
 	me->equip(tmp);
-	std::cout << "_____________" << std::endl;
 	tmp = src->createMateria("cure");
-	std::cout << "_____________" << std::endl;
 	me->equip(tmp);
-	std::cout << "_____________" << std::endl;
+	
 	ICharacter* bob = new Character("bob");
-	std::cout << "_____________" << std::endl;
 	me->use(0, *bob);
 	me->use(1, *bob);
-	std::cout << "_____________" << std::endl;
+
 	delete bob;
-	std::cout << "_____________" << std::endl;
 	delete me;
-	std::cout << "_____________" << std::endl;
 	delete src;
-	std::cout << "_____________" << std::endl;
-*/
-	std::cout << "		Create a materia source1:" << std::endl;
+	
+
+	/*  std::cout << "		Create a materia source1." << std::endl;
 	IMateriaSource* src1 = new MateriaSource();
 
-	std::cout << "		learn 3 materias, null(should print message), 1 materia" << std::endl;
+	std::cout << "		learn 3 materias (ICE, ICE, CURE)" << std::endl;
 	src1->learnMateria(new Ice());
 	src1->learnMateria(new Ice());
 	src1->learnMateria(new Cure());
+	std::cout << "		learn null(should print message)" << std::endl;
 	src1->learnMateria(NULL);
+	std::cout << "		learn 1 materia" << std::endl;
 	src1->learnMateria(new Cure());
 
 	std::cout << "		has to fail learning next 2 materias:" << std::endl;
@@ -55,46 +46,52 @@ int main() {
 
 	std::cout << "		Create a materia source2:" << std::endl;
 	IMateriaSource* src2 = new MateriaSource();
+	std::cout << "		learn 4 (4xICE) materias" << std::endl;
 	src2->learnMateria(new Ice());
 	src2->learnMateria(new Ice());
 	src2->learnMateria(new Ice());
 	src2->learnMateria(new Ice());
 	std::cout << "*****************************" << std::endl;
 
-	AMateria* tmp;
+	// AMateria* tmp;
+	AMateria* storageToDelete[8];
+	for (int i = 0; i < 8; i++) {storageToDelete[i] = NULL;}
+
 	std::cout << "		new character test1 & test2:" << std::endl;
 	ICharacter* test1 = new Character("test1");
 	ICharacter* test2 = new Character("test2");
 
 	std::cout << "\n		create materia and equip test1:" << std::endl;
-	tmp = src1->createMateria("cure");
-	test1->equip(tmp);
-	tmp = src1->createMateria("ice");
-	test1->equip(tmp);
-	tmp = src1->createMateria("ice");
-	test1->equip(tmp); 
+	storageToDelete[0] = src1->createMateria("cure");
+	test1->equip(storageToDelete[0]);
+	storageToDelete[1] = src1->createMateria("ice");
+	test1->equip(storageToDelete[1]);
+	storageToDelete[2] = src1->createMateria("ice");
+	test1->equip(storageToDelete[2]); 
 	std::cout << "\n		create materia from source2:" << std::endl;
-	tmp = src2->createMateria("ice");
-	test1->equip(tmp);
+	storageToDelete[3] = src2->createMateria("ice");
+	test1->equip(storageToDelete[3]);
+
 	std::cout << "		has to fail(print message) creating materia from source2:" << std::endl;
-	tmp = src2->createMateria("cure");
-	std::cout << "		has to fail equip materia:" << std::endl;
-	test1->equip(tmp);
+	storageToDelete[4] = src2->createMateria("cure");
+
+	std::cout << "		has to fail equip null materia:" << std::endl;
+	test1->equip(storageToDelete[4]);
 	std::cout << "*****************************" << std::endl;
 
-	
 	std::cout << "		create materia and equip test2:" << std::endl;
-	tmp = src1->createMateria("cure");
-	test2->equip(tmp);
+	storageToDelete[5] = src1->createMateria("cure");
+	test2->equip(storageToDelete[5]);
 	std::cout << "		has to fail creating materia from source2:" << std::endl;
-	tmp = src2->createMateria("");
+	storageToDelete[6] = src2->createMateria("");
 	std::cout << "		has to try to equip NULL materia:" << std::endl;
-	test2->equip(tmp);
+	test2->equip(storageToDelete[6]);
 	std::cout << "		create materia from source2:" << std::endl;
-	tmp = src2->createMateria("ice");
-	test2->equip(tmp);
+	storageToDelete[7] = src2->createMateria("ice");
+	test2->equip(storageToDelete[7]);
 
-
+	// test1->printInv();
+	// test2->printInv();
 	std::cout << "\n		test1 uses materia on test2:" << std::endl;
 	test1->use(0, *test2); //cure src1
 	test1->use(1, *test2); //ice src1
@@ -106,19 +103,33 @@ int main() {
 	test2->use(2, *test1);
 	std::cout << "		test2 tries unequip materia in invalid index:" << std::endl;
 	test2->unequip(2);
-	std::cout << "		test1 & test2 try unequip materia:" << std::endl;
+	
+
+	std::cout << "		test1 try unequip materia:" << std::endl;
 	test1->unequip(3);
 	test1->unequip(2);
+	test1->unequip(1);
 	test1->unequip(0);
+	test1->unequip(0);
+	test1->unequip(-1);
+	std::cout << "		test2 try unequip materia:" << std::endl;
+	test2->unequip(0);
 	test2->unequip(1);
+	test2->unequip(2);
 	std::cout << "		test1 uses materia on test2 after unequip:" << std::endl;
 	test1->use(0, *test2);
 
-	std::cout << "\n		deleting:" << std::endl;
+	// std::cout << "\n		deleting:" << std::endl;
 	delete test1;
-	delete test2;
+	delete test2; 
 	delete src1;
 	delete src2;
-	// delete tmp;
+	for (int i = 0; i < 8; i++) {
+		if (storageToDelete[i] != NULL) {
+			delete storageToDelete[i];
+			storageToDelete[i] = NULL;
+		}
+	} 
+ */
 	return 0;
 }
