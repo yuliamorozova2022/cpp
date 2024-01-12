@@ -1,6 +1,5 @@
 #include "RobotomyRequestForm.h"
 
-
 //-------- Orthodox Canonical Form ---------
 RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", 72, 45), _target("default") {
     std::cout << "Default RobotomyRequestForm created" << std::endl;

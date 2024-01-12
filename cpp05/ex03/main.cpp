@@ -11,6 +11,14 @@ int main() {
 	Intern newbe;
 	AForm* blank = NULL;
 
+	std::cout << "\n----------------TEST 0-------------------\n" << std::endl;
+	{
+		Intern someRandomIntern;
+		AForm* rrf;
+		rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+		std::cout << *rrf << std::endl;
+		delete rrf;
+	}
 	std::cout << "\n----------------TEST 1-------------------\n" << std::endl;
 	std::cout << "	Intern tries to create unknown form:" << std::endl;
 	try {
@@ -22,6 +30,7 @@ int main() {
 
 	std::cout << "\n----------------TEST 2-------------------\n" << std::endl;
 	std::cout << "	Intern tries to create forms:" << std::endl;
+	std::cout << "\n\t\t\t(ShrubberyCreationForm)" << std::endl;
 	//ShrubberyCreationForm
 	try {
 		blank = newbe.makeForm("shrubbery request", "shr");
@@ -33,6 +42,7 @@ int main() {
 	catch (std::exception& e) {
 		std::cerr  << "Exception: " << e.what() << std::endl;
 	}
+	std::cout << "\n\t\t\t(PresidentialPardonForm)" << std::endl;
 	//PresidentialPardonForm
 	try {
 		blank = newbe.makeForm("presidential request", "pr");
@@ -44,6 +54,7 @@ int main() {
 	catch (std::exception& e) {
 		std::cerr  << "Exception: " << e.what() << std::endl;
 	}
+	std::cout << "\n\t\t\t(RobotomyRequestForm)" << std::endl;
 	//RobotomyRequestForm
 	try {
 		blank = newbe.makeForm("robotomy request", "Bender");

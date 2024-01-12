@@ -2,6 +2,7 @@
 #define __ROBOTOMYREQUESTFORM__
 
 #include "AForm.h"
+#include <cstdlib>
 
 class RobotomyRequestForm : public AForm {
 public:

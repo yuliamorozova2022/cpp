@@ -25,13 +25,13 @@ Intern& Intern::operator = (const Intern& orig) {
 }
 //--------------------------------
 
-AForm *newShrubbery(std::string target) {
+AForm *Intern::newShrubbery(std::string target) {
 	return (new ShrubberyCreationForm(target));
 }
-AForm *newRobotomy(std::string target) {
+AForm *Intern::newRobotomy(std::string target) {
 	return (new RobotomyRequestForm(target));
 }
-AForm *newPresidential(std::string target) {
+AForm *Intern::newPresidential(std::string target) {
 	return (new PresidentialPardonForm(target));
 }
 
