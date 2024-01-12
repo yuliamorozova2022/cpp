@@ -4,7 +4,7 @@ SRC 	= main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp
 HEADER	= Animal.h Cat.h Dog.h WrongAnimal.h WrongCat.h
 
 CC 		= c++
-FLAGS	= -Wall -Wextra -Werror -g -std=c++98 
+FLAGS	= -Wall -Wextra -Werror -g -std=c++98 -fsanitize=address
 RM		= rm -rf
 
 all: $(NAME)
