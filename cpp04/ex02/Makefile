@@ -1,10 +1,10 @@
 NAME 	= animals
 
-SRC 	= main.cpp Animal.cpp Cat.cpp Dog.cpp Brain.cpp#WrongAnimal.cpp WrongCat.cpp
-HEADER	= Animal.h Cat.h Dog.h Brain.h#WrongAnimal.h WrongCat.h
+SRC 	= main.cpp Animal.cpp Cat.cpp Dog.cpp Brain.cpp
+HEADER	= Animal.h Cat.h Dog.h Brain.h
 
 CC 		= c++
-FLAGS	= -Wall -Wextra -Werror -g -std=c++98 #-fsanitize=address
+FLAGS	= -Wall -Wextra -Werror -g -std=c++98 -fsanitize=address
 RM		= rm -rf
 
 all: $(NAME)

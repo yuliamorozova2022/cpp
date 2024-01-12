@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Brain.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yuliamorozova <yuliamorozova@student.42    +#+  +:+       +#+        */
+/*   By: ymorozov <ymorozov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 13:55:20 by ymorozov          #+#    #+#             */
-/*   Updated: 2024/01/03 15:46:17 by yuliamorozo      ###   ########.fr       */
+/*   Updated: 2024/01/03 17:14:16 by ymorozov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@ The Orthodox Canonical Class Form
 Brain::Brain() {
 	for (int i = 0; i < SIZE; i++) {
 		// new (ideas + i) std::string();
-		ideas[i] = "";
+		_ideas[i] = "";
 	}
 	std::cout << "Brain default constructor" << std::endl;
 }
 
 Brain::Brain(const Brain& orig) {
 	// ideas = new std::string[SIZE];
-	std::cout << "				brain 0, size = "<<SIZE<< std::endl;
+	std::cout << "				brain 0, size = " << SIZE << std::endl;
 	
 	for (int i = 0; i < SIZE; i++) {
 		_ideas[i] = orig._ideas[i];
