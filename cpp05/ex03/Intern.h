@@ -33,4 +33,6 @@ private:
     AForm *newPresidential(std::string target);
 };
 
+typedef AForm* (Intern::*func_pointers)(std::string target);
+
 #endif

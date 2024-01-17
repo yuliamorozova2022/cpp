@@ -5,8 +5,7 @@ Bureaucrat::Bureaucrat() : _name("Bureaucrat"), _grade(1){
 	std::cout << "Default Bureaucrat created" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat& orig) {
-	_name = orig.getName();
+Bureaucrat::Bureaucrat(const Bureaucrat& orig) : _name(orig.getName()) {
 	_grade = orig.getGrade();
 	std::cout << "Copy constructor. Bureaucrat " << _name << " copied" << std::endl;
 }
@@ -19,26 +18,21 @@ Bureaucrat& Bureaucrat::operator = (const Bureaucrat& orig) {
 	if (this == &orig) {
 		return *this;
 	}
-	_name = orig.getName();
 	_grade = orig.getGrade();
-	std::cout << "Assignment operator. Bureaucrat " << _name << " assigned" << std::endl;
+	std::cout << "Assignment operator. Bureaucrat " << orig.getName() << " assigned" << std::endl;
 	return *this;
 }
 
-Bureaucrat::Bureaucrat(std::string name, int grade) {
+Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name) {
 	if (grade < 1) {
 		throw SomethingWrongExeption();
-		return;
 	}
 	if (grade > MINGRADE) {
 		throw GradeToLowExeption();
-		return;
 	}
 	if (grade < MAXGRADE) {
 		throw GradeToHighExeption();
-		return;
 	}
-	_name = name;
 	_grade = grade;
 	std::cout << "Bureaucrat " << _name << " with grade " << _grade << " created" << std::endl;
 }

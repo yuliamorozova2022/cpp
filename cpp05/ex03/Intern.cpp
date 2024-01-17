@@ -49,16 +49,12 @@ AForm * Intern::makeForm(std::string type, std::string target) {
 			break;
 		}
 	}
-	switch(idx) {
-		case 0:
-			return newShrubbery(target);
-		case 1:
-			return newShrubbery(target);
-		case 2:
-			return newShrubbery(target);
-		default:
-			throw Intern::UnknownType();
-			// std::cerr << "Invalid form type (" << type << ")." << std::endl;
+	if (idx != FORMNUMBER) {
+		func_pointers forms[3] = {&Intern::newShrubbery, &Intern::newRobotomy, &Intern::newPresidential};
+		return (this->*(forms[idx]))(target);
+	} else {
+		throw UnknownType();
 	}
 	return NULL;
+
 }
