@@ -6,6 +6,7 @@
 #include <limits>
 #include <exception>
 #include <cctype>
+#include <cstdlib>
 
 #define RED "\033[0;91m"
 #define NRM "\033[0;39m"
