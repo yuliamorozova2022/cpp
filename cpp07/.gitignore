@@ -1,0 +1,9 @@
+**/**.dSYM/**
+**/**/**.dSYM/**
+**/.DS_Store
+**/.vscode
+**.zip
+
+**/**/whatever
+**/**/serializer
+**/**/identifier
