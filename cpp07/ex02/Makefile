@@ -1,7 +1,7 @@
-NAME 	= iter
+NAME 	= arr
 
 SRC 	= main.cpp
-HEADER	= iter.h
+HEADER	= Array.h
 
 CC 		= c++
 FLAGS	= -Wall -Wextra -Werror -g -std=c++98 -fsanitize=address

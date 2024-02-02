@@ -1,17 +1,33 @@
 #include "iter.h"
 //#include <time.h>
 
-template <typename T> void printHalf(T const &a) {
+template <typename T> void printHalf(T& a) {
     std::cout << a / 2 << " ";
 }
 
+template <typename T> void increment(T& a) {
+    a++;
+}
 
-void printStr(std::string const &str) {
+void printStr(std::string &str) 
+{
 	std::cout << str << std::endl;
 }
 
+
 int	main()
 {
+	std::cout << "----------------------------------------------------" << std::endl;
+	int arr0[5] = {-70, 7, 256, -777, 0};
+	std::cout << "	Int array before: ";
+	for (int i = 0; i < 5; i++)
+		std::cout << arr0[i] << " ";
+	std::cout << std::endl;
+	iter(arr0, 5, increment);
+	std::cout << "	Int array after: ";
+	for (int i = 0; i < 5; i++)
+		std::cout << arr0[i] << " ";
+	std::cout << std::endl;
 	std::cout << "----------------------------------------------------" << std::endl;
 	double arr1[5] = {-70.2, 7.5, 256.6, -777, 0};
 	std::cout << "	Double array before: \n";
