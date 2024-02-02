@@ -1,50 +1,94 @@
-#include "iter.h"
-//#include <time.h>
+#include "Array.h"
+#include <time.h>
+#include <ctime>
 
-template <typename T> void printHalf(T& a) {
-    std::cout << a / 2 << " ";
+template <typename T> void printArr(T const &a, int len) {
+	for (size_t i = 0; i < static_cast<size_t>(len); i++) {
+		std::cout << a[i] << " ";
+	}
+	std::cout << std::endl;
 }
 
-template <typename T> void increment(T& a) {
-    a++;
-}
-
-void printStr(std::string &str) 
+#define MAX_VAL 750/*750*/
+int main()
 {
-	std::cout << str << std::endl;
-}
+	// int *a = new int();
+	// std::cout << *a << std::endl;
+	// Array<int> numbers(3);
+	// std::cout << numbers.size() << std::endl;
+	// for (size_t i = 0; i < 3; i++)
+	// {
+	// 	numbers[i] = i;
+	// }
+	
+    Array<int> numbers(MAX_VAL);
+    int* mirror = new int[MAX_VAL];
+    srand(time(NULL));
+    for (int i = 0; i < MAX_VAL; i++) {
+        const int value = rand();
+        numbers[i] = value;
+        mirror[i] = value;
+		// std::cout << "i = " << i << ", value to set = " << value << std::endl;
+    }
 
+	// std::cout << "Numbers array: " << std::endl;
+	// printArr(numbers, MAX_VAL);
+	// std::cout << "Mirror array: " << std::endl;
+	// printArr(mirror, MAX_VAL);
 
-int	main()
-{
-	std::cout << "----------------------------------------------------" << std::endl;
-	int arr0[5] = {-70, 7, 256, -777, 0};
-	std::cout << "	Int array before: ";
-	for (int i = 0; i < 5; i++)
-		std::cout << arr0[i] << " ";
-	std::cout << std::endl;
-	iter(arr0, 5, increment);
-	std::cout << "	Int array after: ";
-	for (int i = 0; i < 5; i++)
-		std::cout << arr0[i] << " ";
-	std::cout << std::endl;
-	std::cout << "----------------------------------------------------" << std::endl;
-	double arr1[5] = {-70.2, 7.5, 256.6, -777, 0};
-	std::cout << "	Double array before: \n";
-	for (int i = 0; i < 5; i++)
-		std::cout << arr1[i] << " ";
-	std::cout << std::endl;
-	std::cout << "	Double array after:" << std::endl;
-	iter(arr1, 5, printHalf);
-	std::cout << std::endl;
-	std::cout << "----------------------------------------------------" << std::endl;
-	std::string arr2[5] = {"a", "hi", "256.6", "****", "hell0!"};
-	std::cout << "	String array before:" << std::endl;
-	for (int i = 0; i < 5; i++)
-		std::cout << arr2[i] << std::endl;
-	std::cout << "	String array after:" << std::endl;
-	iter(arr2, 5, printStr);
-	std::cout << "----------------------------------------------------" << std::endl;
+    //SCOPE
+    {
+        Array<int> tmp = numbers;
+        Array<int> test(tmp);
+    }
+    for (int i = 0; i < MAX_VAL; i++) {
+        if (mirror[i] != numbers[i]) {
+            std::cerr << "didn't save the same value!!" << std::endl;
+            return 1;
+        }
+    }
 
-	return 0;
+    try {
+		std::cout << "try to set 0 value to -2 index of array" << std::endl;
+        numbers[-2] = 0;
+    }
+    catch(const std::exception& e) {
+        std::cerr << e.what() << '\n';
+    }
+    try {
+		std::cout << "try to set 0 value to MAX_VAL index of array" << std::endl;
+        numbers[MAX_VAL] = 0;
+    }
+	catch(const std::exception& e) {
+        std::cerr << e.what() << '\n';
+    }
+	try {
+		std::cout << "try to set 0 value to 0 index of mirror array" << std::endl;
+        mirror[0] = 0;
+    }
+    catch(const std::exception& e) {
+        std::cerr << e.what() << '\n';
+    }
+
+	// std::cout << "Mirror array: " << std::endl;
+	// printArr(mirror, MAX_VAL);
+
+	// Array<int> numbers_new(numbers);
+	// std::cout << "Copy numbers array: " << std::endl;
+	// printArr(numbers_new, MAX_VAL);
+
+    for (int i = 0; i < MAX_VAL; i++) {
+        numbers[i] = rand();
+    }
+
+	// std::cout << "Numbers array with new values: " << std::endl;
+	// printArr(numbers, MAX_VAL);
+	// std::cout << "Mirror array: " << std::endl;
+	// printArr(mirror, MAX_VAL);
+	// std::cout << "Copy numbers array: " << std::endl;
+	// printArr(numbers_new, MAX_VAL);
+
+    delete [] mirror;//
+	std::cout << "all cool" << std::endl;
+    return 0;
 }
