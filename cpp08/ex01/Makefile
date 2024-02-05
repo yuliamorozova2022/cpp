@@ -4,7 +4,7 @@ SRC 	= main.cpp Span.cpp
 HEADER	= Span.h
 
 CC 		= c++
-FLAGS	= -Wall -Wextra -Werror -g -std=c++98 -fsanitize=address
+FLAGS	= -Wall -Wextra -Werror -g -std=c++98 -fsanitize=address #-std=c++11
 RM		= rm -rf
 
 all: $(NAME)
