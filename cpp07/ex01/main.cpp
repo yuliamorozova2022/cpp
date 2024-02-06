@@ -1,5 +1,6 @@
 #include "iter.h"
 //#include <time.h>
+#include <iostream>
 
 template <typename T> void printHalf(T const &a) {
     std::cout << a / 2 << " ";
