@@ -20,8 +20,8 @@ public:
 //---------------- methods ------------------
 	void addNumber(int n);
     void addRange(int start, int end);
-    // int shortestSpan();
-    // int longestSpan();
+    int shortestSpan();
+    int longestSpan();
     void print();
 
 private:
@@ -35,6 +35,9 @@ private:
 		const char* what() const throw();
 	};
     class NotEnoughSpaceException : public std::exception {
+		const char* what() const throw();
+	};
+	class NotEnoughElementsException : public std::exception {
 		const char* what() const throw();
 	};
 };
