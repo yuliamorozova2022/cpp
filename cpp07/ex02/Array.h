@@ -6,7 +6,8 @@
 #define RED "\033[0;91m"
 #define NRM "\033[0;39m"
 
-template <typename T> class Array {
+template <typename T>
+class Array {
 public:
     Array(unsigned int size);
 //-------- Orthodox Canonical Form ---------
