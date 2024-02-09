@@ -4,7 +4,7 @@ SRC 	= main.cpp
 HEADER	= MutantStack.h
 
 CC 		= c++
-FLAGS	= -Wall -Wextra -Werror -g -std=c++98 -fsanitize=address
+FLAGS	= -Wall -Wextra -Werror -g -std=c++98 #-fsanitize=address
 RM		= rm -rf
 
 all: $(NAME)

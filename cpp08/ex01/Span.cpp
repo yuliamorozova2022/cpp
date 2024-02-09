@@ -59,19 +59,59 @@ int Span::shortestSpan() {
 	if (size <= 1) {
 		throw NotEnoughElementsException();
 	}
-	int smalest = abs(_vect[1] - _vect[0]);
+    if (size == 2) {
+		return abs(_vect[1] - _vect[0]);
+	}
+    std::vector<int> copy(_vect);
+    std::sort(copy.begin(), copy.end());
+    int smlst = abs(*(copy.begin() + 1) - *copy.begin());
+    // std::cout << "___________________________________________\n";
+    // std::cout << "abs(*(copy.begin() + 1) - *copy.begin()) = " << smlst << std::endl;
+    int tmp = smlst;
+    int idx1, idx2;
+    for (std::vector<int>::iterator i = copy.begin(); i + 1 < copy.end(); i++) {
+        idx1 = std::distance(copy.begin(), i + 1);
+        idx2 = std::distance(copy.begin(), i);
+        // std::cout << "idx1 = " << idx1 << ", idx2 = " << idx2 << std::endl;
+        tmp = abs(copy.at(idx1) - copy.at(idx2));
+        // std::cout << "abs(" << copy.at(idx1) << " - " << copy.at(idx2) << ") = " << tmp << std::endl;
+        if (tmp < smlst) {
+            smlst = tmp;
+        }
+        // std::cout << "smlst = " << smlst << std::endl;
+    }
+    // std::cout << "retyrn  = " << smlst << std::endl;
+    // std::cout << "___________________________________________\n";
+    return smlst;
+    // std::vector<int>::iterator idx1 = std::min_element(_vect.begin(), _vect.end());
+    // int smalest_val1 = *idx1;
+    //     std::cout << "\nidx1 = " << std::distance(_vect.begin(), idx1) << ", smalest_val1 = " << smalest_val1 << std::endl;
+    // std::vector<int>::iterator idx2 = std::min_element(_vect.begin(), idx1 - 1);
+    // int smalest_val2 = *idx2;
+    //     std::cout << "idx2 = " << std::distance(_vect.begin(), idx2) << ", smalest_val2 = " << smalest_val2 << std::endl;
+    // std::vector<int>::iterator idx3 = std::min_element(idx1 + 1, _vect.end());
+    // int smalest_val3 = *idx3;
+    //     std::cout << "idx3 = " << std::distance(_vect.begin(), idx3) << ", smalest_val3 = " << smalest_val3 << std::endl;
+    // std::vector<int> v;
+    // v.push_back(abs(smalest_val1 - smalest_val2));
+    // v.push_back(abs(smalest_val1 - smalest_val3));
+    // v.push_back(abs(smalest_val2 - smalest_val3));
+
+    // std::cout << "abs(smalest_val1 - smalest_val2) = " << v[0] << ", abs(smalest_val1 - smalest_val3) = " << v[1] << ", abs(smalest_val2 - smalest_val3) = " << v[2] << std::endl;
+	// int smalest = abs(_vect[1] - _vect[0]);
 	// std::cout << "abs(_vect[1] - _vect[0]) = abs(" << _vect[1] << " - " << _vect[0]  << ")"<< " = " << smalest << std::endl;
-	if (size == 2) {
-		return smalest;
-	}
-	for (int i = 2; i < size; i++) {
-		// std::cout << "i = "<<i<< " , smalest = "<<smalest << " , abs(" <<_vect[i] << " - " <<_vect[i - 1]<<" = " << abs(_vect[i] - _vect[i - 1]) << ")"<<std::endl;
-		if (abs(_vect[i] - _vect[i - 1]) < smalest) {
-			smalest = abs(_vect[i] - _vect[i - 1]);
-		}
-	}
-	return smalest;
-	
+	// if (size == 2) {
+	// 	return smalest;
+	// }
+    // int tmp = smalest;
+	// for (int i = 2; i < size; i++) {
+	// 	// std::cout << "i = "<<i<< " , smalest = "<<smalest << " , abs(" <<_vect[i] << " - " <<_vect[i - 1]<<" = " << abs(_vect[i] - _vect[i - 1]) << ")"<<std::endl;
+	// 	tmp = abs(_vect[i] - _vect[i - 1]);
+    //     if (tmp < smalest) {
+	// 		smalest = tmp;
+	// 	}
+	// }
+	// return (*std::min_element(v.begin(), v.end()));
 }
 
 int Span::longestSpan() {
