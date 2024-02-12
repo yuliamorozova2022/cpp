@@ -5,6 +5,6 @@
 **.zip
 
 **/**/btc
-**/**/*.csv
+#**/**/*.csv
 **/**/RPN
 **/**/PmergeMe
