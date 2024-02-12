@@ -1,0 +1,10 @@
+**/**.dSYM/**
+**/**/**.dSYM/**
+**/.DS_Store
+**/.vscode
+**.zip
+
+**/**/btc
+**/**/*.csv
+**/**/RPN
+**/**/PmergeMe
