@@ -1,20 +1,15 @@
 #include "RPN.hpp"
 //-------- Orthodox Canonical Form ---------
 RPN::RPN() {
-	// _dev0 = false;
 }
 RPN::RPN(const RPN& orig) {
 	_stackInt = orig._stackInt;
-	// _stackOpers = orig._stackOpers;
-	// _dev0 = false;
 }
 RPN& RPN::operator=(const RPN& orig) {
 	if (this == &orig) {
 		return *this;
 	}
 	_stackInt = orig._stackInt;
-	// _stackOpers = orig._stackOpers;
-	// _dev0 = false;
 	return *this;
 }
 RPN::~RPN() {
@@ -54,9 +49,6 @@ void RPN::calculate(char c) {
 				throw DevByZeroException();
 			}
 		}
-		//  else {
-		// 	throw UnknownCharacterException();
-		// }
 	} else {
 		throw ErrorException();
 	}

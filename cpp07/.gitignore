@@ -1,9 +1,0 @@
-**/**.dSYM/**
-**/**/**.dSYM/**
-**/.DS_Store
-**/.vscode
-**.zip
-
-**/**/whatever
-**/**/iter
-**/**/arr
