@@ -36,15 +36,20 @@ void RPN::calculate(char c) {
 		_stackInt.pop();
 		int num1 = _stackInt.top();
 		_stackInt.pop();
+		// std::cout << "num1 = " << num1 << ", num2 = " <<num2<< std::endl;
 		if (c == '+') {
 			_stackInt.push(num1 + num2);
+			// std::cout << "after '+' added " << _stackInt.top() << std::endl;
 		} else if (c == '-') {
 			_stackInt.push(num1 - num2);
+			// std::cout << "after '-' added " << _stackInt.top() << std::endl;
 		} else if (c == '*') {
 			_stackInt.push(num1 * num2);
+			// std::cout << "after '*' added " << _stackInt.top() << std::endl;
 		} else if (c == '/') {
 			if (num2 != 0) {
 				_stackInt.push(num1 / num2);
+				// std::cout << "after '/' added " << _stackInt.top() << std::endl;
 			} else {
 				throw DevByZeroException();
 			}
@@ -55,11 +60,12 @@ void RPN::calculate(char c) {
 }
 
 int RPN::handle(const char *str) {
-// 	std::cout << "str: " << str << std::endl;
 	int i =0;
+	// 	std::cout << "\n" << std::endl;
 	while (str[i]) {
 		if (isdigit(str[i])) {
 			_stackInt.push(str[i] - '0');
+			// std::cout << "added " << _stackInt.top() << std::endl;
 		} else if (str[i] == ' ' || str[i] == '+' || str[i] == '-' || str[i] == '*' || str[i] == '/') {
 			calculate(str[i]);
 		} else {

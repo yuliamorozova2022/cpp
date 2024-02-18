@@ -37,10 +37,13 @@ int main(int argc, char *argv[]) {
 				RPN n2;
 				const char *str2 = "2 4 / 8 6 - *"; // = (2 / 4) * (8 - 6)
 				std::cout << "res for \"" << str2 << "\" is " << n2.handle(str2) << std::endl;// result must be -0.5 or in that case 0
-				
 				RPN n3;
-				const char *str3 = "3 7 + 2 / 5 * 6 8 - 2 * - ";
-				std::cout << "res for \"" << str3 << "\" is " << n3.handle(str3) << std::endl;// result must be 29
+				const char *str3 = "8 4 / 8 6 - *"; // = (8 / 4) * (8 - 6)
+				std::cout << "res for \"" << str3 << "\" is " << n3.handle(str3) << std::endl;// result must be 4
+				
+				RPN n4;
+				const char *str4 = "3 7 + 2 / 5 * 6 8 - 2 * - ";
+				std::cout << "res for \"" << str4 << "\" is " << n4.handle(str4) << std::endl;// result must be 29
 			}
 			catch(const std::exception& e) {
 				std::cerr << e.what() << '\n';
