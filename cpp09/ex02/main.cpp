@@ -1,13 +1,10 @@
 #include "PmergeMe.hpp"
 
 int main(int argc, char *argv[]) {
-	if (argc <= 2) /*&& std::string::(argv[1]) != "autotests") */{
-		std::cerr << "Error. Too few arguments" << std::endl;
+	if (argc <= 2) {
+		std::cerr << RED "Error. Too few arguments" NRM << std::endl;
 		return 1;
 	}
-	/*if (std::string::(argv[1]) == "autotests") {
-		//todo
-	}*/
 	else {
 		try {
 			PmergeMe pm(argc, argv);

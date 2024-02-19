@@ -8,4 +8,5 @@
 #**/**/*.csv
 **/**/RPN
 **/**/PmergeMe
-**/**/*copy.cpp
+**/**/*.log
+# **/**/*copy.cpp
